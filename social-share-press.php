@@ -13,6 +13,7 @@
  * Text Domain:      social-share-press
  */
 
+
 if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
@@ -78,7 +79,7 @@ final class Social_share_press{
     }
 
     public function on_plugin_init(){
-        new SSPress\Admin\Menu();
+        new SSPress\Includes\Admin\Menu();
     }
 
 }
@@ -90,7 +91,7 @@ final class Social_share_press{
  */
 
 function social_share_press(){
-    Social_share_press::get_instance();
+    return Social_share_press::get_instance();
 }
 
 // Kick of the plugin

@@ -1,9 +1,9 @@
 <?php
 
-namespace SSPress\Admin;
+namespace SSPress\Includes\Admin;
 
 class Menu{
     public function __construct(){
-        var_dump( "xdfghsdfghsdfghfh" );
+        var_dump("dfrgsdfgsdfg");
     }
 }
