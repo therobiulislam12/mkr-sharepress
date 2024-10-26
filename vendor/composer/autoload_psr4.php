@@ -6,5 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    'SSPress\\includes\\' => array($baseDir . '/includes'),
+    'SSPress\\' => array($baseDir . '/includes'),
 );

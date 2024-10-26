@@ -9,12 +9,12 @@ class ComposerStaticInitd751713988987e9331980363e24189ce
     public static $prefixLengthsPsr4 = array (
         'S' => 
         array (
-            'SSPress\\includes\\' => 17,
+            'SSPress\\' => 8,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
-        'SSPress\\includes\\' => 
+        'SSPress\\' => 
         array (
             0 => __DIR__ . '/../..' . '/includes',
         ),
