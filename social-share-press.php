@@ -44,6 +44,9 @@ if ( !class_exists( 'SSPP_Main' ) ) {
 
             // the_content hook
             add_filter( 'the_content', array( $this, 'sspp_template_load' ), 1 );
+
+            // add frontend scripts and style
+            add_action( 'wp_enqueue_scripts', array( $this, 'sspp_enqueue_front_end_script_style' ) );
         }
 
         /**
@@ -69,7 +72,9 @@ if ( !class_exists( 'SSPP_Main' ) ) {
 
         /**
          * After content load here i want to add content
-         * @return mixed
+         *
+         * @param mixed $content the post content
+         * @return mixed the post content
          */
         public function sspp_template_load( $content ) {
 
@@ -81,6 +86,21 @@ if ( !class_exists( 'SSPP_Main' ) ) {
             $content = $content . $template;
 
             return $content;
+        }
+
+        /**
+         * Enqueue Front end data
+         *
+         * @return void
+         */
+        public function sspp_enqueue_front_end_script_style() {
+            wp_register_script('sspp-main-template', SSPP_PLUGIN_URI . 'assets/js/main-template.js', [], SSPP_PLUGIN_VERSION, array('in_footer' => true));
+
+            wp_register_style('sspp-main-template', SSPP_PLUGIN_URI . 'assets/css/main-template.css', [], SSPP_PLUGIN_VERSION, 'all');
+
+
+            wp_enqueue_script('sspp-main-template');
+            wp_enqueue_style('sspp-main-template');
         }
 
     }
