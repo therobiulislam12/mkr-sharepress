@@ -26,7 +26,6 @@ defined( 'SSPP_PLUGIN_FILE' ) || define( 'SSPP_PLUGIN_FILE', plugin_basename( __
 defined( 'SSPP_PLUGIN_VERSION' ) || define( 'SSPP_PLUGIN_VERSION', '1.0.0' );
 defined( 'SSPP_PLUGIN_FILE_DIR' ) || define( 'SSPP_PLUGIN_FILE_DIR', __FILE__ );
 
-
 if ( !class_exists( 'SSPP_Main' ) ) {
 
     class SSPP_Main {
@@ -42,6 +41,9 @@ if ( !class_exists( 'SSPP_Main' ) ) {
          */
         public function __construct() {
             $this->include_files();
+
+            // the_content hook
+            add_filter( 'the_content', array( $this, 'sspp_template_load' ), 1 );
         }
 
         /**
@@ -63,6 +65,22 @@ if ( !class_exists( 'SSPP_Main' ) ) {
             }
 
             return self::$_instance;
+        }
+
+        /**
+         * After content load here i want to add content
+         * @return mixed
+         */
+        public function sspp_template_load( $content ) {
+
+            ob_start();
+            require_once __DIR__ . '/templates/main-template.php';
+            $template = ob_get_clean();
+
+            // append with content
+            $content = $content . $template;
+
+            return $content;
         }
 
     }
