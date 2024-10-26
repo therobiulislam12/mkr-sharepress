@@ -1,6 +1,7 @@
 .ssp-template-container{
     width: 400px;
     margin: 0 auto;
+    padding: 10px 0;
 }
 .ssp-template-icons{
     display: flex;
