@@ -17,6 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) {
     exit;
 }
 
+require_once __DIR__ . '/vendor/autoload.php';
+
 /**
  * The main plugin class
  */
@@ -42,9 +44,9 @@ final class Social_share_press{
     private function __construct(){
         $this->define_constants();
 
-        register_activation_hook( __FILE__, [ $this, 'activate' ] );
+        register_activation_hook( __FILE__, array( $this, 'activate' ) );
 
-        add_action( 'plugins_loaded', [ $this, 'init_plugin' ] );
+        add_action( 'admin_init', array( $this, 'on_plugin_init' ) );
     }
 
     /**
@@ -58,6 +60,25 @@ final class Social_share_press{
         define( 'SSPRESS_PATH', __DIR__ );
         define( 'SSPRESS_URL', plugins_url( '', SSPRESS_FILE ) );
         define( 'SSPRESS_ASSETS', SSPRESS_URL . '/assets' );
+    }
+
+    /**
+     * Do stuff upon plugin activation
+     *
+     * @return void
+     */
+    public function activate() {
+        $installed = get_option( 'SSPress_installed' );
+
+        if ( ! $installed ) {
+            update_option( 'SSPress_installed', time() );
+        }
+
+        update_option( 'SSPress_version', SSPRESS_VERSION );
+    }
+
+    public function on_plugin_init(){
+        new SSPress\Includes\Admin;
     }
 
 }
