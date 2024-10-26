@@ -77,7 +77,7 @@ final class Social_share_press{
     }
 
     public function on_plugin_init(){
-        new SSPress\Includes\Admin\Menu();
+        # code 
     }
 
 }
