@@ -1,0 +1,8 @@
+{
+    "autoload": {
+        "psr-4": {
+            "SSPress\\Includes\\": "includes/"
+        },
+        "files": []
+    }
+}
