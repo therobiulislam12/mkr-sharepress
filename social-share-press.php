@@ -12,3 +12,48 @@
  * Domain Path:       /languages
  * Text Domain:      social-share-press
  */
+
+if ( ! defined( 'ABSPATH' ) ) {
+    exit;
+}
+
+/**
+ * The main plugin class
+ */
+
+final class Social_share_press{
+
+    /**
+     * Plugin version
+     *
+     * @var string
+     */
+    const version = '1.0.0';
+
+    private static $instance;
+
+    public static function get_instance(){
+        if( ! defined( self::$instance ) ){
+            self::$instance == new self();
+        }
+        return self::$instance;
+    }
+
+    private function __construct(){
+
+    }
+
+}
+
+/**
+ * Initialization of the main plugin
+ * 
+ * @return \Social_share_press
+ */
+
+function social_share_press(){
+    Social_share_press::get_instance();
+}
+
+// Kick of the plugin
+social_share_press();
