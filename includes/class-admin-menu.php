@@ -113,9 +113,9 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 
                 <label for="sspp_select_template"></label>
                 <select name="sspp_select_template" id="sspp_select_template">
-                    <option value="">Choose one...</option>
+                    <option value=""><?php echo esc_html__('Choose one...', 'social-share-press') ?></option>
 					<?php foreach ( $templates as $template ): ?>
-                        <option value="<?php echo $template; ?>" name="<?php echo $template; ?>"><?php echo ucfirst($template); ?></option>
+                        <option value="<?php echo $template; ?>" name="<?php echo esc_attr($template) ?>"><?php echo esc_html__(ucfirst($template), 'social-share-press') ?></option>
 					<?php endforeach; ?>
                 </select>
 
