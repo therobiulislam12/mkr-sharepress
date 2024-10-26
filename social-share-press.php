@@ -40,7 +40,24 @@ final class Social_share_press{
     }
 
     private function __construct(){
+        $this->define_constants();
 
+        register_activation_hook( __FILE__, [ $this, 'activate' ] );
+
+        add_action( 'plugins_loaded', [ $this, 'init_plugin' ] );
+    }
+
+    /**
+     * Define the required plugin constants
+     *
+     * @return void
+     */
+    public function define_constants() {
+        define( 'SSPRESS_VERSION', self::version );
+        define( 'SSPRESS_FILE', __FILE__ );
+        define( 'SSPRESS_PATH', __DIR__ );
+        define( 'SSPRESS_URL', plugins_url( '', SSPRESS_FILE ) );
+        define( 'SSPRESS_ASSETS', SSPRESS_URL . '/assets' );
     }
 
 }
