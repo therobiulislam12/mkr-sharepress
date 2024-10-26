@@ -1,18 +1,34 @@
 <?php
 /**
  * Admin Menu Page
+ * 
+ * @since 1.0.0
  */
 
 if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 	class SSPP_Class_Admin_Menu {
 
+		/**
+		 * Create instance variable
+		 * @var bool
+		 */
 		protected static $_instance = null;
 
+		/**
+		 * Main Constructor
+		 */
 		public function __construct() {
 			add_action( 'admin_menu', array( $this, 'register_admin_menu_page' ) );
 			add_action( 'admin_init', array( $this, 'register_settings_admin_menu_page' ) );
+
+			// plugin page link setup land on plugin menu
+			add_action( 'plugin_action_links_' . plugin_basename( SSPP_PLUGIN_FILE_DIR ), array( $this, 'sspp_plugin_menu_option' ) );
 		}
 
+		/**
+		 * Register menu page
+		 * @return void
+		 */
 		public function register_settings_admin_menu_page() {
 			add_settings_section( 'sspp_settings_section', 'Settings', null, 'sspp-settings-page' );
 
@@ -68,6 +84,11 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 			}
 		}
 
+		/**
+		 * Summary of render_setting_fields
+		 * @param array $args
+		 * @since 1.0.0
+		 */
 		public function render_setting_fields( $args ) {
 			$field_id    = $args['field_id'];
 			$field_type  = $args['field_type'];
@@ -110,10 +131,19 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 			}
 		}
 
+		/**
+		 * Register admin menu
+		 * 
+		 * @return void
+		 */
 		public function register_admin_menu_page() {
 			add_menu_page( 'Admin Settings', 'SSP Settings', 'manage_options', 'sspp-settings', array( $this, 'render_admin_menu_page' ), '', 7 );
 		}
 
+		/**
+		 * Admin menu page render
+		 * @return void
+		 */
 		public function render_admin_menu_page() { ?>
             <div class='wrap-sspp-settings-page'>
                 <form id="sspp-settings-form" method="post" action="<?php echo esc_url( admin_url( 'options.php' ) ); ?>" enctype="multipart/form-data">
@@ -125,6 +155,13 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 			<?php
 		}
 
+		/**
+		 * create instance method
+		 * 
+		 * @return bool
+		 * 
+		 * @since 1.0.0
+		 */
 		public static function instance() {
 			if ( is_null( self::$_instance ) ) {
 				self::$_instance = new self();
@@ -132,7 +169,21 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 
 			return self::$_instance;
 		}
+
+		/**
+		 * Summary of tn_plugin_menu_option
+		 * @param mixed $links
+		 * @return string[]
+		 */
+		public function sspp_plugin_menu_option( $links ) {
+			$settings_links = array(
+				sprintf( '<a href="%1$s">%2$s</a>', admin_url( 'admin.php?page=sspp-settings' ), __( 'Settings', 'team-network' ) )
+			);
+			$links = array_merge( $settings_links, $links );
+			return $links;
+		}
 	}
 }
 
+// generate the instance
 SSPP_Class_Admin_Menu::instance();

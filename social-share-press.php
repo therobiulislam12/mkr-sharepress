@@ -4,7 +4,7 @@
  * Description:  All in one social media sharing platform. Post any content without boundary.
  * Plugin URI:   #
  * Version:      1.0.0
- * Author:       Robiul Islam
+ * Author:       Robiul, Khorshed, Mustafizur
  * Author URI:   https://robiul.net/about
  * License:      GPL v2 or later
  * License URI:  https://www.gnu.org/licenses/gpl-2.0.html
@@ -12,85 +12,64 @@
  * Text Domain:  social-share-press
  */
 
-if ( ! defined( 'ABSPATH' ) ) {
+if ( !defined( 'ABSPATH' ) ) {
     exit;
 }
-
-require_once __DIR__ . '/vendor/autoload.php';
 
 /**
  * The main plugin class
  */
 
-final class Social_share_press{
+defined( 'SSPP_PLUGIN_URI' ) || define( 'SSPP_PLUGIN_URI', WP_PLUGIN_URL . '/' . plugin_basename( dirname( __FILE__ ) ) . '/' );
+defined( 'SSPP_PLUGIN_DIR' ) || define( 'SSPP_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
+defined( 'SSPP_PLUGIN_FILE' ) || define( 'SSPP_PLUGIN_FILE', plugin_basename( __FILE__ ) );
+defined( 'SSPP_PLUGIN_VERSION' ) || define( 'SSPP_PLUGIN_VERSION', '1.0.0' );
+defined( 'SSPP_PLUGIN_FILE_DIR' ) || define( 'SSPP_PLUGIN_FILE_DIR', __FILE__ );
 
-    /**
-     * Plugin version
-     *
-     * @var string
-     */
-    const version = '1.0.0';
 
-    private static $instance;
+if ( !class_exists( 'SSPP_Main' ) ) {
 
-    public static function get_instance(){
-        if( ! defined( self::$instance ) ){
-            self::$instance == new self();
-        }
-        return self::$instance;
-    }
+    class SSPP_Main {
 
-    private function __construct(){
-        $this->define_constants();
+        /**
+         * Create some instance
+         * @var bool
+         */
+        protected static $_instance = null;
 
-        register_activation_hook( __FILE__, array( $this, 'activate' ) );
-
-        add_action( 'admin_init', array( $this, 'on_plugin_init' ) );
-    }
-
-    /**
-     * Define the required plugin constants
-     *
-     * @return void
-     */
-    public function define_constants() {
-        define( 'SSPRESS_VERSION', self::version );
-        define( 'SSPRESS_FILE', __FILE__ );
-        define( 'SSPRESS_PATH', __DIR__ );
-        define( 'SSPRESS_URL', plugins_url( '', SSPRESS_FILE ) );
-        define( 'SSPRESS_ASSETS', SSPRESS_URL . '/assets' );
-    }
-
-    /**
-     * Do stuff upon plugin activation
-     *
-     * @return void
-     */
-    public function activate() {
-        $installed = get_option( 'SSPress_installed' );
-
-        if ( ! $installed ) {
-            update_option( 'SSPress_installed', time() );
+        /**
+         * main constructor
+         */
+        public function __construct() {
+            $this->include_files();
         }
 
-        update_option( 'SSPress_version', SSPRESS_VERSION );
-    }
+        /**
+         * Includes all file
+         * @return void
+         */
+        public function include_files() {
+            require SSPP_PLUGIN_DIR . 'includes/class-admin-menu.php';
+        }
 
-    public function on_plugin_init(){
-        # code 
-    }
+        /**
+         * Summary of instance
+         *
+         * @return bool
+         */
+        public static function instance() {
+            if ( is_null( self::$_instance ) ) {
+                self::$_instance = new self();
+            }
 
+            return self::$_instance;
+        }
+
+    }
 }
 
 /**
  * Initialization of the main plugin
- * 
- * @return \Social_share_press
+ *
  */
-
-function social_share_press(){
-    return Social_share_press::get_instance();
-}
-
-// Kick of the plugin
-social_share_press();
+SSPP_Main::instance();
