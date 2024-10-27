@@ -38,28 +38,33 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 
 			$fields = array(
 				'sspp_enable_disable'    => array(
-					'title'    => esc_html__( 'Enable/Disable', ' social-share-press' ),
+					'title'    => esc_html__( 'Enable/Disable', 'social-share-press' ),
 					'type'     => 'checkbox',
 					'data'     => '',
-					'subtitle' => esc_html__( 'Enable for applying all settings', ' social-share-press' ),
+					'subtitle' => esc_html__( 'Enable for applying all settings', 'social-share-press' ),
 				),
 				'sspp_show_buttons'      => array(
-					'title'       => esc_html__( 'Show Buttons', ' social-share-press' ),
+					'title'       => esc_html__( 'Show Buttons', 'social-share-press' ),
 					'type'        => 'radio',
 					'radio_value' => $show_buttons,
-					'subtitle'    => esc_html__( 'Select Template', ' social-share-press' ),
+					'subtitle'    => esc_html__( 'Select Template', 'social-share-press' ),
 				),
 				'sspp_select_template'   => array(
-					'title'     => esc_html__( 'Templates', ' social-share-press' ),
+					'title'     => esc_html__( 'Templates', 'social-share-press' ),
 					'type'      => 'select',
 					'templates' => $templates,
-					'subtitle'  => esc_html__( 'Select Template', ' social-share-press' ),
+					'subtitle'  => esc_html__( 'Select Template', 'social-share-press' ),
+				),
+				'sspp_show_in_pages'     => array(
+					'title' => esc_html__( 'All Pages', 'social-share-press' ),
+					'type'  => 'pages',
+					'pages' => get_all_pages(),
 				),
 				'sspp_show_social_links' => array(
-					'title'    => esc_html__( 'Social Links', ' social-share-press' ),
+					'title'    => esc_html__( 'Social Links', 'social-share-press' ),
 					'type'     => 'checkboxes',
 					'data'     => $social_links,
-					'subtitle' => esc_html__( 'Choose..', ' social-share-press' ),
+					'subtitle' => esc_html__( 'Choose..', 'social-share-press' ),
 				),
 			);
 
@@ -77,6 +82,7 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 						'templates'   => $field_data['templates'] ?? '',
 						'radio_value' => $field_data['radio_value'] ?? '',
 						'data'        => $field_data['data'] ?? '',
+						'pages'       => $field_data['pages'] ?? '',
 					]
 				);
 
@@ -85,11 +91,12 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 		}
 
 		/**
-         * Summary of render_setting_fields
+		 * Summary of render_setting_fields
+		 *
 		 * @param $args
 		 *
 		 * @return void
-         * @since 1.0.0
+		 * @since 1.0.0
 		 */
 		public function render_setting_fields( $args ) {
 			$field_id    = $args['field_id'];
@@ -98,6 +105,7 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 			$data        = $args['data'];
 			$templates   = $args['templates'];
 			$radio_value = $args['radio_value'];
+			$pages       = $args['pages'];
 			$subtitle    = isset( $args['subtitle'] ) ? sanitize_text_field( $args['subtitle'] ) : '';
 
 			if ( $field_type == 'checkbox' ) {
@@ -127,15 +135,25 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
                 </select>
 
 			<?php } elseif ( $field_type == 'radio' ) {
-                $button = get_option('sspp_show_buttons');
+
+				$button = get_option( 'sspp_show_buttons' );
 				foreach ( $radio_value as $value ):
-                    $radio_checked = ($button==$value)?esc_html__( 'checked', 'social-share-press' ) : '';
-                    ?>
+					$radio_checked = ( $button == $value ) ? esc_html__( 'checked', 'social-share-press' ) : '';
+					?>
                     <label>
-                        <input type="radio" name="sspp_show_buttons" <?php echo esc_attr( $radio_checked ) ?>  value="<?php echo $value; ?>">
+                        <input type="radio" name="sspp_show_buttons" <?php echo esc_attr( $radio_checked ) ?> value="<?php echo $value; ?>">
 						<?php echo ucfirst( $value ); ?>
                     </label>
 				<?php endforeach;
+
+			} elseif ( $field_type == 'pages' ) {
+
+				foreach ( $pages as $slug => $name ) {
+					$checked = in_array( $slug, (array) $field_value ) ? 'checked="checked"' : ''; ?>
+                    <input type="checkbox" id="<?php echo esc_attr( $slug ); ?>" name="sspp_show_in_pages[]" value="<?php echo esc_attr( $slug ); ?>" <?php echo esc_html( $checked ); ?>>
+                    <label for="<?php echo esc_attr( $slug ); ?>"><?php echo esc_html( $name ); ?></label><br>
+				<?php }
+
 			} else {
 				echo '<input type="' . esc_attr( $field_type ) . '" id="' . esc_attr( $field_id ) . '"  name="' . esc_attr( $field_id ) . '" value="' . esc_attr( $field_value ) . '" /><p>' . esc_html( $subtitle ) . '</p>';
 			}

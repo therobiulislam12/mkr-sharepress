@@ -55,6 +55,7 @@ if ( ! class_exists( 'SSPP_Main' ) ) {
 		 */
 		public function include_files() {
 			require SSPP_PLUGIN_DIR . 'includes/class-admin-menu.php';
+			require SSPP_PLUGIN_DIR . 'includes/functions.php';
 		}
 
 		/**
@@ -79,7 +80,10 @@ if ( ! class_exists( 'SSPP_Main' ) ) {
 		 */
 		public function sspp_template_load( $content ) {
 
+			$page          = $_GET['page'] ?? '';
+			$selected_page = get_option( 'sspp_show_in_pages', [] );
 			$load_template = get_option( 'sspp_select_template' );
+
 			if ( $load_template ) {
 				ob_start();
 				require_once __DIR__ . "/templates/" . $load_template . ".php";
@@ -88,6 +92,8 @@ if ( ! class_exists( 'SSPP_Main' ) ) {
 				// append with content
 				$content = $content . $template;
 
+			} elseif ( ! empty( $selected_page ) && in_array( $page, $selected_page ) ) {
+				return $content;
 			} else {
 				ob_start();
 				require_once __DIR__ . "/templates/main-template.php";
@@ -108,7 +114,7 @@ if ( ! class_exists( 'SSPP_Main' ) ) {
 		public function sspp_enqueue_front_end_script_style() {
 			wp_register_script( 'sspp-main-template', SSPP_PLUGIN_URI . 'assets/js/main-template.js', [], SSPP_PLUGIN_VERSION, array( 'in_footer' => true ) );
 			wp_register_style( 'sspp-main-template', SSPP_PLUGIN_URI . 'assets/css/main-template.css', [], SSPP_PLUGIN_VERSION, 'all' );
-            
+
 			wp_register_style( 'sspp-template-1', SSPP_PLUGIN_URI . 'assets/css/template-1.css', [], SSPP_PLUGIN_VERSION, 'all' );
 
 			wp_register_style( 'sspp-fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css', [], SSPP_PLUGIN_VERSION, 'all' );
