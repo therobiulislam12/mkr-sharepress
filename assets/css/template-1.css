@@ -1,0 +1,93 @@
+.ssp-template-container{
+    width: 400px;
+    margin: 0 auto;
+    padding: 10px 0;
+}
+  
+.ssp-bg-box {
+    width: 100%;
+    min-height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.ssp-share-btn {
+    padding: 8px 20px;
+    background-color: #eee;
+    position: relative;
+    border-radius: 50px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.ssp-share-btn:hover {
+    transform: scale(1.1);
+}
+
+.ssp-text-share-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50px;
+    font-family: arial;
+    font-size: 24px;
+    transition: 1s 0.2s;
+    z-index: 99999;
+}
+
+.ssp-share-btn:hover .ssp-text-share-btn {
+    left: -100%;
+}
+
+.ssp-share-items {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    font-size: 30px;
+    padding: 0;
+}
+
+.ssp-share-items li {
+    padding: 0 17px;
+    
+}
+
+.ssp-share-items li a {
+    color: #000;
+    display: inline-block;
+    transform: scale(0);
+}
+
+.ssp-share-btn:hover ul li a {
+    transform: scale(1);
+}
+
+.ssp-share-items li:nth-child(5) a {
+    transition: 0.5s 0.3s;
+}
+
+.ssp-share-items li:nth-child(4) a {
+    transition: 0.5s 0.45s;
+}
+
+.ssp-share-items li:nth-child(3) a {
+    transition: 0.5s 0.6s;
+}
+
+.ssp-share-items li:nth-child(2) a {
+    transition: 0.5s 0.75s;
+}
+
+.ssp-share-items li:nth-child(1) a {
+    transition: 0.5s 0.9s;
+}

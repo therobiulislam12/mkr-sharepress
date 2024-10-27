@@ -107,12 +107,19 @@ if ( ! class_exists( 'SSPP_Main' ) ) {
 		 */
 		public function sspp_enqueue_front_end_script_style() {
 			wp_register_script( 'sspp-main-template', SSPP_PLUGIN_URI . 'assets/js/main-template.js', [], SSPP_PLUGIN_VERSION, array( 'in_footer' => true ) );
-
 			wp_register_style( 'sspp-main-template', SSPP_PLUGIN_URI . 'assets/css/main-template.css', [], SSPP_PLUGIN_VERSION, 'all' );
+            
+			wp_register_style( 'sspp-template-1', SSPP_PLUGIN_URI . 'assets/css/template-1.css', [], SSPP_PLUGIN_VERSION, 'all' );
+
+			wp_register_style( 'sspp-fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css', [], SSPP_PLUGIN_VERSION, 'all' );
 
 
 			wp_enqueue_script( 'sspp-main-template' );
 			wp_enqueue_style( 'sspp-main-template' );
+
+			wp_enqueue_style( 'sspp-template-1' );
+
+			wp_enqueue_style( 'sspp-fontawesome' );
 		}
 
 	}
