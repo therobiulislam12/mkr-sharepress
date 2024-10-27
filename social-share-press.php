@@ -12,8 +12,8 @@
  * Text Domain:  social-share-press
  */
 
-if ( !defined( 'ABSPATH' ) ) {
-    exit;
+if ( ! defined( 'ABSPATH' ) ) {
+	exit;
 }
 
 /**
@@ -26,84 +26,96 @@ defined( 'SSPP_PLUGIN_FILE' ) || define( 'SSPP_PLUGIN_FILE', plugin_basename( __
 defined( 'SSPP_PLUGIN_VERSION' ) || define( 'SSPP_PLUGIN_VERSION', '1.0.0' );
 defined( 'SSPP_PLUGIN_FILE_DIR' ) || define( 'SSPP_PLUGIN_FILE_DIR', __FILE__ );
 
-if ( !class_exists( 'SSPP_Main' ) ) {
+if ( ! class_exists( 'SSPP_Main' ) ) {
 
-    class SSPP_Main {
+	class SSPP_Main {
 
-        /**
-         * Create some instance
-         * @var bool
-         */
-        protected static $_instance = null;
+		/**
+		 * Create some instance
+		 * @var bool
+		 */
+		protected static $_instance = null;
 
-        /**
-         * main constructor
-         */
-        public function __construct() {
-            $this->include_files();
+		/**
+		 * main constructor
+		 */
+		public function __construct() {
+			$this->include_files();
 
-            // the_content hook
-            add_filter( 'the_content', array( $this, 'sspp_template_load' ), 1 );
+			// the_content hook
+			add_filter( 'the_content', array( $this, 'sspp_template_load' ), 1 );
 
-            // add frontend scripts and style
-            add_action( 'wp_enqueue_scripts', array( $this, 'sspp_enqueue_front_end_script_style' ) );
-        }
+			// add frontend scripts and style
+			add_action( 'wp_enqueue_scripts', array( $this, 'sspp_enqueue_front_end_script_style' ) );
+		}
 
-        /**
-         * Includes all file
-         * @return void
-         */
-        public function include_files() {
-            require SSPP_PLUGIN_DIR . 'includes/class-admin-menu.php';
-        }
+		/**
+		 * Includes all file
+		 * @return void
+		 */
+		public function include_files() {
+			require SSPP_PLUGIN_DIR . 'includes/class-admin-menu.php';
+		}
 
-        /**
-         * Summary of instance
-         *
-         * @return bool
-         */
-        public static function instance() {
-            if ( is_null( self::$_instance ) ) {
-                self::$_instance = new self();
-            }
+		/**
+		 * Summary of instance
+		 *
+		 * @return bool
+		 */
+		public static function instance() {
+			if ( is_null( self::$_instance ) ) {
+				self::$_instance = new self();
+			}
 
-            return self::$_instance;
-        }
+			return self::$_instance;
+		}
 
-        /**
-         * After content load here i want to add content
-         *
-         * @param mixed $content the post content
-         * @return mixed the post content
-         */
-        public function sspp_template_load( $content ) {
+		/**
+		 * After content load here i want to add content
+		 *
+		 * @param mixed $content the post content
+		 *
+		 * @return mixed the post content
+		 */
+		public function sspp_template_load( $content ) {
 
-            ob_start();
-            require_once __DIR__ . '/templates/main-template.php';
-            $template = ob_get_clean();
+			$load_template = get_option( 'sspp_select_template' );
+			if ( $load_template ) {
+				ob_start();
+				require_once __DIR__ . "/templates/" . $load_template . ".php";
+				$template = ob_get_clean();
 
-            // append with content
-            $content = $content . $template;
+				// append with content
+				$content = $content . $template;
 
-            return $content;
-        }
+			} else {
+				ob_start();
+				require_once __DIR__ . "/templates/main-template.php";
+				$template = ob_get_clean();
 
-        /**
-         * Enqueue Front end data
-         *
-         * @return void
-         */
-        public function sspp_enqueue_front_end_script_style() {
-            wp_register_script('sspp-main-template', SSPP_PLUGIN_URI . 'assets/js/main-template.js', [], SSPP_PLUGIN_VERSION, array('in_footer' => true));
+				// append with content
+				$content = $content . $template;
+			}
 
-            wp_register_style('sspp-main-template', SSPP_PLUGIN_URI . 'assets/css/main-template.css', [], SSPP_PLUGIN_VERSION, 'all');
+			return $content;
+		}
+
+		/**
+		 * Enqueue Front end data
+		 *
+		 * @return void
+		 */
+		public function sspp_enqueue_front_end_script_style() {
+			wp_register_script( 'sspp-main-template', SSPP_PLUGIN_URI . 'assets/js/main-template.js', [], SSPP_PLUGIN_VERSION, array( 'in_footer' => true ) );
+
+			wp_register_style( 'sspp-main-template', SSPP_PLUGIN_URI . 'assets/css/main-template.css', [], SSPP_PLUGIN_VERSION, 'all' );
 
 
-            wp_enqueue_script('sspp-main-template');
-            wp_enqueue_style('sspp-main-template');
-        }
+			wp_enqueue_script( 'sspp-main-template' );
+			wp_enqueue_style( 'sspp-main-template' );
+		}
 
-    }
+	}
 }
 
 /**

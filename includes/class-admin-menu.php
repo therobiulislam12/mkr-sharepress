@@ -1,7 +1,7 @@
 <?php
 /**
  * Admin Menu Page
- * 
+ *
  * @since 1.0.0
  */
 
@@ -32,7 +32,7 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 		public function register_settings_admin_menu_page() {
 			add_settings_section( 'sspp_settings_section', 'Settings', null, 'sspp-settings-page' );
 
-			$social_links = [ 'facebook', 'instagram', 'twitter', 'linkedin' ];
+			$social_links = [ 'facebook', 'instagram', 'twitter', 'linkedin', 'whatsapp' ];
 			$show_buttons = [ 'top', 'bottom', 'left', 'right' ];
 			$templates    = [ 'template-1', 'template-2', 'template-3', 'template-4', 'template-5', ];
 
@@ -71,12 +71,12 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 					'sspp-settings-page',
 					'sspp_settings_section',
 					[
-						'field_id'   => $field_id,
-						'field_type' => $field_data['type'],
-						'subtitle'   => $field_data['subtitle'] ?? '',
-						'templates'  => $field_data['templates'] ?? '',
-						'radio_value'  => $field_data['radio_value'] ?? '',
-						'data'       => $field_data['data'] ?? '',
+						'field_id'    => $field_id,
+						'field_type'  => $field_data['type'],
+						'subtitle'    => $field_data['subtitle'] ?? '',
+						'templates'   => $field_data['templates'] ?? '',
+						'radio_value' => $field_data['radio_value'] ?? '',
+						'data'        => $field_data['data'] ?? '',
 					]
 				);
 
@@ -85,9 +85,11 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 		}
 
 		/**
-		 * Summary of render_setting_fields
-		 * @param array $args
-		 * @since 1.0.0
+         * Summary of render_setting_fields
+		 * @param $args
+		 *
+		 * @return void
+         * @since 1.0.0
 		 */
 		public function render_setting_fields( $args ) {
 			$field_id    = $args['field_id'];
@@ -95,7 +97,7 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 			$field_value = get_option( $field_id, '' );
 			$data        = $args['data'];
 			$templates   = $args['templates'];
-			$radio_value   = $args['radio_value'];
+			$radio_value = $args['radio_value'];
 			$subtitle    = isset( $args['subtitle'] ) ? sanitize_text_field( $args['subtitle'] ) : '';
 
 			if ( $field_type == 'checkbox' ) {
@@ -103,27 +105,35 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 				echo '<input type="checkbox" id="' . esc_attr( $field_id ) . '" name="' . esc_attr( $field_id ) . '" value="yes" ' . checked( 'yes', $field_value, false ) . ' /><p>' . esc_html( $subtitle ) . '</p>';
 			} elseif ( $field_type == 'checkboxes' ) {
 
-				foreach ( $data as $slug => $name ) {
-					$checked = in_array( $slug, (array) $field_value ) ? 'checked="checked"' : ''; ?>
-                    <input type="checkbox" id="<?php echo esc_attr( $slug ); ?>" name="sspp_show_social_links[]" value="<?php echo esc_attr( $slug ); ?>" <?php echo esc_html( $checked ); ?>>
-                    <label for="<?php echo esc_attr( $slug ); ?>"><?php echo esc_html( ucfirst($name) ); ?></label><br>
+				foreach ( $data as $index => $value ) {
+
+					$checked = in_array( $value, (array) $field_value ) ? 'checked="checked"' : ''; ?>
+                    <input type="checkbox" id="<?php echo esc_attr( $value ); ?>" name="sspp_show_social_links[]" value="<?php echo esc_attr( $value ); ?>" <?php echo esc_html( $checked ); ?>>
+                    <label for="<?php echo esc_attr( $value ); ?>"><?php echo esc_html( ucfirst( $value ) ); ?></label><br>
 				<?php }
 
 			} elseif ( $field_type == 'select' ) { ?>
 
                 <label for="sspp_select_template"></label>
                 <select name="sspp_select_template" id="sspp_select_template">
-                    <option value=""><?php echo esc_html__('Choose one...', 'social-share-press') ?></option>
-					<?php foreach ( $templates as $template ): ?>
-                        <option value="<?php echo $template; ?>" name="<?php echo esc_attr($template) ?>"><?php echo esc_html__(ucfirst($template), 'social-share-press') ?></option>
+                    <option value=""><?php echo esc_html__( 'Choose one...', 'social-share-press' ) ?></option>
+					<?php
+					$select = get_option( 'sspp_select_template' );
+					foreach ( $templates as $template ):
+						$selected = ( $template == $select ) ? esc_html__( 'selected', 'social-share-press' ) : '';
+						?>
+                        <option value="<?php echo $template; ?>" name="<?php echo esc_attr( $template ) ?>" <?php echo esc_attr( $selected ) ?> ><?php echo esc_html__( ucfirst( $template ), 'social-share-press' ) ?></option>
 					<?php endforeach; ?>
                 </select>
 
 			<?php } elseif ( $field_type == 'radio' ) {
-				foreach ( $radio_value as $value ): ?>
+                $button = get_option('sspp_show_buttons');
+				foreach ( $radio_value as $value ):
+                    $radio_checked = ($button==$value)?esc_html__( 'checked', 'social-share-press' ) : '';
+                    ?>
                     <label>
-                        <input type="radio" name="sspp_show_buttons" value="<?php echo $value; ?>">
-	                    <?php echo ucfirst($value); ?>
+                        <input type="radio" name="sspp_show_buttons" <?php echo esc_attr( $radio_checked ) ?>  value="<?php echo $value; ?>">
+						<?php echo ucfirst( $value ); ?>
                     </label>
 				<?php endforeach;
 			} else {
@@ -133,7 +143,7 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 
 		/**
 		 * Register admin menu
-		 * 
+		 *
 		 * @return void
 		 */
 		public function register_admin_menu_page() {
@@ -157,9 +167,9 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 
 		/**
 		 * create instance method
-		 * 
+		 *
 		 * @return bool
-		 * 
+		 *
 		 * @since 1.0.0
 		 */
 		public static function instance() {
@@ -172,14 +182,17 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 
 		/**
 		 * Summary of tn_plugin_menu_option
+		 *
 		 * @param mixed $links
+		 *
 		 * @return string[]
 		 */
 		public function sspp_plugin_menu_option( $links ) {
 			$settings_links = array(
 				sprintf( '<a href="%1$s">%2$s</a>', admin_url( 'admin.php?page=sspp-settings' ), __( 'Settings', 'team-network' ) )
 			);
-			$links = array_merge( $settings_links, $links );
+			$links          = array_merge( $settings_links, $links );
+
 			return $links;
 		}
 	}
