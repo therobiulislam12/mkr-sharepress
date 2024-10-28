@@ -124,7 +124,7 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 
                 <label for="sspp_select_template"></label>
                 <select name="sspp_select_template" id="sspp_select_template">
-                    <option value=""><?php echo esc_html__( 'Choose one...', 'social-share-press' ) ?></option>
+                    <option value=""><?php echo esc_html__( 'Main Template', 'social-share-press' ) ?></option>
 					<?php
 					$select = get_option( 'sspp_select_template' );
 					foreach ( $templates as $template ):
