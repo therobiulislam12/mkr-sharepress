@@ -124,13 +124,13 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 
                 <label for="sspp_select_template"></label>
                 <select name="sspp_select_template" id="sspp_select_template">
-                    <option value=""><?php echo esc_html__( 'Choose one...', 'social-share-press' ) ?></option>
+                    <option value=""><?php echo esc_html__( 'Main Template', 'social-share-press' ) ?></option>
 					<?php
 					$select = get_option( 'sspp_select_template' );
 					foreach ( $templates as $template ):
 						$selected = ( $template == $select ) ? esc_html__( 'selected', 'social-share-press' ) : '';
 						?>
-                        <option value="<?php echo $template; ?>" name="<?php echo esc_attr( $template ) ?>" <?php echo esc_attr( $selected ) ?> ><?php echo esc_html__( ucfirst( $template ), 'social-share-press' ) ?></option>
+                        <option value="<?php echo esc_attr($template) ?>" name="<?php echo esc_attr( $template ) ?>" <?php echo esc_attr( $selected ) ?> ><?php echo esc_html__( ucfirst( $template ), 'social-share-press' ) ?></option>
 					<?php endforeach; ?>
                 </select>
 
@@ -141,8 +141,8 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 					$radio_checked = ( $button == $value ) ? esc_html__( 'checked', 'social-share-press' ) : '';
 					?>
                     <label>
-                        <input type="radio" name="sspp_show_buttons" <?php echo esc_attr( $radio_checked ) ?> value="<?php echo $value; ?>">
-						<?php echo ucfirst( $value ); ?>
+                        <input type="radio" name="sspp_show_buttons" <?php echo esc_attr( $radio_checked ) ?> value="<?php echo esc_attr($value) ?>">
+						<?php echo esc_html__(ucfirst( $value ), 'social-share-press') ?>
                     </label>
 				<?php endforeach;
 
@@ -207,7 +207,7 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 		 */
 		public function sspp_plugin_menu_option( $links ) {
 			$settings_links = array(
-				sprintf( '<a href="%1$s">%2$s</a>', admin_url( 'admin.php?page=sspp-settings' ), __( 'Settings', 'team-network' ) )
+				sprintf( '<a href="%1$s">%2$s</a>', admin_url( 'admin.php?page=sspp-settings' ), __( 'Settings', 'social-share-press' ) )
 			);
 			$links          = array_merge( $settings_links, $links );
 

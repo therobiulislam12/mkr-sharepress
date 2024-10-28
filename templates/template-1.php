@@ -7,6 +7,7 @@ $permitted_links = get_option( 'sspp_show_social_links', [] );
 
 ?>
 
+<?php if ( !empty( $permitted_links ) ): ?>
 <section class="ssp-template-main-template">
     <div class="ssp-bg-box">
         <div class="ssp-share-btn">
@@ -28,3 +29,4 @@ $permitted_links = get_option( 'sspp_show_social_links', [] );
         </div>
     </div>
 </section>
+<?php endif?>

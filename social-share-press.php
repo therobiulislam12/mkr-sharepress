@@ -117,7 +117,7 @@ if ( ! class_exists( 'SSPP_Main' ) ) {
 
 			wp_register_style( 'sspp-template-1', SSPP_PLUGIN_URI . 'assets/css/template-1.css', [], SSPP_PLUGIN_VERSION, 'all' );
 
-			wp_register_style( 'sspp-fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css', [], SSPP_PLUGIN_VERSION, 'all' );
+			wp_register_style( 'sspp-fontawesome', SSPP_PLUGIN_URI . 'assets/css/font-awesome.min.css', [], SSPP_PLUGIN_VERSION, 'all' );
 
 
 			wp_enqueue_script( 'sspp-main-template' );
