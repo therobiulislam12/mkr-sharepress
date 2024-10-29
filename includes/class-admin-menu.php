@@ -32,7 +32,7 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 		public function register_settings_admin_menu_page() {
 			add_settings_section( 'sspp_settings_section', 'Settings', null, 'sspp-settings-page' );
 
-			$social_links = [ 'facebook', 'instagram', 'twitter', 'linkedin', 'whatsapp' ];
+			$social_links = [ 'facebook', 'twitter', 'linkedin', 'whatsapp', 'telegram', 'skype', 'reddit', 'pinterest', 'mail' ];
 			$show_buttons = [ 'top', 'bottom', 'left', 'right' ];
 			$templates    = [ 'template-1', 'template-2', 'template-3', 'template-4', 'template-5', ];
 
