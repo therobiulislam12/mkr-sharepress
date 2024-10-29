@@ -113,20 +113,18 @@ if ( ! class_exists( 'SSPP_Main' ) ) {
 		 * @return void
 		 */
 		public function sspp_enqueue_front_end_script_style() {
-			wp_register_script( 'sspp-main-template', SSPP_PLUGIN_URI . 'assets/js/main-template.js', [], SSPP_PLUGIN_VERSION, array( 'in_footer' => true ) );
-			wp_register_style( 'sspp-main-template', SSPP_PLUGIN_URI . 'assets/css/main-template.css', [], SSPP_PLUGIN_VERSION, 'all' );
+			wp_register_script( 'sspp-template-scripts', SSPP_PLUGIN_URI . 'assets/js/template-scripts.js', [], SSPP_PLUGIN_VERSION, array( 'in_footer' => true ) );
 
-			wp_register_style( 'sspp-template-1', SSPP_PLUGIN_URI . 'assets/css/template-1.css', [], SSPP_PLUGIN_VERSION, 'all' );
+			wp_register_style( 'sspp-template-styles', SSPP_PLUGIN_URI . 'assets/css/template-styles.css', [], SSPP_PLUGIN_VERSION, 'all' );
 
 			wp_register_style( 'sspp-fontawesome', SSPP_PLUGIN_URI . 'assets/css/font-awesome/css/all.css', [], SSPP_PLUGIN_VERSION, 'all' );
 
 
-			wp_enqueue_script( 'sspp-main-template' );
-			wp_enqueue_style( 'sspp-main-template' );
+			wp_enqueue_script( 'sspp-template-scripts' );
 			
 			wp_enqueue_style( 'sspp-fontawesome' );
 
-			wp_enqueue_style( 'sspp-template-1' );
+			wp_enqueue_style( 'sspp-template-styles' );
 
 		}
 
