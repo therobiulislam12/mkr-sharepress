@@ -104,7 +104,7 @@ if ( ! class_exists( 'SSPP_Main' ) ) {
 
 			} else {
 				ob_start();
-				require_once __DIR__ . "/templates/main-template.php";
+				require_once __DIR__ . "/templates/template-1.php";
 				$template = ob_get_clean();
 
 				// append with content

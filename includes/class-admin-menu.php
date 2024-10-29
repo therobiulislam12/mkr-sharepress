@@ -30,11 +30,11 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 		 * @return void
 		 */
 		public function register_settings_admin_menu_page() {
-			add_settings_section( 'sspp_settings_section', 'Settings', null, 'sspp-settings-page' );
+			add_settings_section( 'sspp_settings_section', 'Settings', '', 'sspp-settings-page' );
 
-			$social_links = [ 'facebook', 'twitter', 'linkedin', 'whatsapp', 'telegram', 'skype', 'reddit', 'pinterest', 'mail' ];
+			$social_links = [ 'facebook', 'twitter', 'linkedin', 'whatsapp', 'telegram', 'skype', 'reddit', 'pinterest', 'mail', 'wechat' ];
 			$show_buttons = [ 'top', 'bottom', 'left', 'right' ];
-			$templates    = [ 'template-1', 'template-2', 'template-3', 'template-4', 'template-5', ];
+			$templates    = [ 'template-2', 'template-3', 'template-4', 'template-5', ];
 
 			$fields = array(
 				'sspp_enable_disable'    => array(
@@ -118,7 +118,7 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 
                 <label for="sspp_select_template"></label>
                 <select name="sspp_select_template" id="sspp_select_template">
-                    <option value=""><?php echo esc_html__( 'Main Template', 'social-share-press' ) ?></option>
+                    <option value=""><?php echo esc_html__( 'Template-1', 'social-share-press' ) ?></option>
 					<?php
 					$select = get_option( 'sspp_select_template' );
 					foreach ( $templates as $template ):
