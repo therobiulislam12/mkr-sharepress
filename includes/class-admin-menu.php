@@ -129,8 +129,9 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 					$select = get_option( 'sspp_select_template' );
 					foreach ( $templates as $template ):
 						$selected = ( $template == $select ) ? esc_html__( 'selected', 'social-share-press' ) : '';
+						$option_text = ucfirst( $template );
 						?>
-                        <option value="<?php echo esc_attr($template) ?>" name="<?php echo esc_attr( $template ) ?>" <?php echo esc_attr( $selected ) ?> ><?php echo esc_html__( ucfirst( $template ), 'social-share-press' ) ?></option>
+                        <option value="<?php echo esc_attr($template) ?>" name="<?php echo esc_attr( $template ) ?>" <?php echo esc_attr( $selected ) ?> ><?php echo esc_html($option_text) ?></option>
 					<?php endforeach; ?>
                 </select>
 
@@ -139,10 +140,11 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 				$button = get_option( 'sspp_show_buttons' );
 				foreach ( $radio_value as $value ):
 					$radio_checked = ( $button == $value ) ? esc_html__( 'checked', 'social-share-press' ) : '';
+					$label = ucfirst( $value );
 					?>
                     <label>
                         <input type="radio" name="sspp_show_buttons" <?php echo esc_attr( $radio_checked ) ?> value="<?php echo esc_attr($value) ?>">
-						<?php echo esc_html__(ucfirst( $value ), 'social-share-press') ?>
+						<?php echo esc_html($label); ?>
                     </label>
 				<?php endforeach;
 
