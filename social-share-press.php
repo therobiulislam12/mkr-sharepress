@@ -82,9 +82,16 @@ if ( ! class_exists( 'SSPP_Main' ) ) {
 
 			$selected_page = get_option( 'sspp_show_in_pages', [] );
 			$load_template = get_option( 'sspp_select_template' );
+			$sspp_show = get_option( 'sspp_enable_disable' );
 
+			// If not single post
 			if( ! is_singular('post')){
 				return;
+			}
+
+			// check if not enable
+			if(! 'yes' == $sspp_show){
+				return $content;
 			}
 
 			if ( $load_template ) {
