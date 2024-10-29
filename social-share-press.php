@@ -83,6 +83,10 @@ if ( ! class_exists( 'SSPP_Main' ) ) {
 			$selected_page = get_option( 'sspp_show_in_pages', [] );
 			$load_template = get_option( 'sspp_select_template' );
 
+			if( ! is_singular('post')){
+				return;
+			}
+
 			if ( $load_template ) {
 				ob_start();
 				require_once __DIR__ . "/templates/" . $load_template . ".php";
