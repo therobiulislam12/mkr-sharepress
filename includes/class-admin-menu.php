@@ -161,13 +161,7 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 		 * @return void
 		 */
 		public function render_admin_menu_page() { ?>
-            <div class='wrap-sspp-settings-page'>
-                <form id="sspp-settings-form" method="post" action="<?php echo esc_url( admin_url( 'options.php' ) ); ?>" enctype="multipart/form-data">
-					<?php settings_fields( 'sspp_settings_options' ); ?>
-					<?php do_settings_sections( 'sspp-settings-page' ); ?>
-					<?php submit_button(); ?>
-                </form>
-            </div>
+            <div class='wrap-sspp-settings-page' id="ssp-dashboard"></div>
 			<?php
 		}
 
