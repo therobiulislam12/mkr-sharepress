@@ -30,11 +30,11 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 		 * @return void
 		 */
 		public function register_settings_admin_menu_page() {
-			add_settings_section( 'sspp_settings_section', 'Settings', null, 'sspp-settings-page' );
+			add_settings_section( 'sspp_settings_section', 'Settings', '', 'sspp-settings-page' );
 
-			$social_links = [ 'facebook', 'instagram', 'twitter', 'linkedin', 'whatsapp' ];
+			$social_links = [ 'facebook', 'twitter', 'linkedin', 'whatsapp', 'telegram', 'skype', 'reddit', 'pinterest', 'mail', 'wechat' ];
 			$show_buttons = [ 'top', 'bottom', 'left', 'right' ];
-			$templates    = [ 'template-1', 'template-2', 'template-3', 'template-4', 'template-5', ];
+			$templates    = [ 'template-2', 'template-3', 'template-4', 'template-5', ];
 
 			$fields = array(
 				'sspp_enable_disable'    => array(
@@ -54,11 +54,6 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 					'type'      => 'select',
 					'templates' => $templates,
 					'subtitle'  => esc_html__( 'Select Template', 'social-share-press' ),
-				),
-				'sspp_show_in_pages'     => array(
-					'title' => esc_html__( 'All Pages', 'social-share-press' ),
-					'type'  => 'pages',
-					'pages' => get_all_pages(),
 				),
 				'sspp_show_social_links' => array(
 					'title'    => esc_html__( 'Social Links', 'social-share-press' ),
@@ -105,7 +100,6 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 			$data        = $args['data'];
 			$templates   = $args['templates'];
 			$radio_value = $args['radio_value'];
-			$pages       = $args['pages'];
 			$subtitle    = isset( $args['subtitle'] ) ? sanitize_text_field( $args['subtitle'] ) : '';
 
 			if ( $field_type == 'checkbox' ) {
@@ -124,7 +118,7 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 
                 <label for="sspp_select_template"></label>
                 <select name="sspp_select_template" id="sspp_select_template">
-                    <option value=""><?php echo esc_html__( 'Main Template', 'social-share-press' ) ?></option>
+                    <option value=""><?php echo esc_html__( 'Template-1', 'social-share-press' ) ?></option>
 					<?php
 					$select = get_option( 'sspp_select_template' );
 					foreach ( $templates as $template ):
@@ -147,14 +141,6 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 						<?php echo esc_html($label); ?>
                     </label>
 				<?php endforeach;
-
-			} elseif ( $field_type == 'pages' ) {
-
-				foreach ( $pages as $slug => $name ) {
-					$checked = in_array( $slug, (array) $field_value ) ? 'checked="checked"' : ''; ?>
-                    <input type="checkbox" id="<?php echo esc_attr( $slug ); ?>" name="sspp_show_in_pages[]" value="<?php echo esc_attr( $slug ); ?>" <?php echo esc_html( $checked ); ?>>
-                    <label for="<?php echo esc_attr( $slug ); ?>"><?php echo esc_html( $name ); ?></label><br>
-				<?php }
 
 			} else {
 				echo '<input type="' . esc_attr( $field_type ) . '" id="' . esc_attr( $field_id ) . '"  name="' . esc_attr( $field_id ) . '" value="' . esc_attr( $field_value ) . '" /><p>' . esc_html( $subtitle ) . '</p>';
