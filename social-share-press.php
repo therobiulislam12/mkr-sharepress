@@ -170,8 +170,10 @@ if ( ! class_exists( 'SSPP_Main' ) ) {
 				)
 			);
 
+			wp_enqueue_style('ssp-admin-dashboard', plugins_url( 'build/index.css', __FILE__ ));
+
 			wp_localize_script('ssp-admin-dashboard', 'SSPPData', array(
-				
+				'ajax_url' => admin_url('admin-ajax.php')
 			));
 		}
 
