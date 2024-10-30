@@ -152,3 +152,64 @@ section.temp-2-ssp-social-bottom-c {
     color: #fff;
     top: -3px;
 }
+
+
+/**
+* Template -5
+ */
+
+
+/* Basic styling for the share button */
+.ssp-template-main-template-5 .ssp-share-button {
+    position: relative;
+    display: inline-block;
+    font-size: 12px;
+    cursor: pointer;
+    /*margin-top: 10px;*/
+}
+
+/* Styling for the share label */
+.ssp-template-main-template-5 .ssp-share {
+    padding: 5px 9px;
+    color: white;
+    border-radius: 5px;
+    text-align: center;
+}
+
+/* Container for social icons */
+.ssp-template-main-template-5 .ssp-social-icons {
+    display: flex;
+    position: absolute;
+    top: -10px;
+    opacity: 1;
+    visibility: hidden;
+    gap: 15px;
+    transition: all 0.3s ease;
+}
+
+/* Show icons on hover */
+.ssp-template-main-template-5 .ssp-share-button:hover .ssp-social-icons {
+    opacity: 1;
+    visibility: visible;
+}
+
+.ssp-template-main-template-5 .ssp-share-button:hover{
+    visibility: hidden;
+    transition: 0.3s;
+}
+
+/* Icon styling */
+.ssp-template-main-template-5 .icon i {
+    font-size: 20px;
+}
+
+/* Original brand colors for each icon */
+.ssp-template-main-template-5 .facebook i { color: #1DA1F2; }
+.ssp-template-main-template-5 .twitter i { color: #1DA1F2; }
+.ssp-template-main-template-5 .whatsapp i { color: #25D366; }
+.ssp-template-main-template-5 .telegram i { color: #0088cc; }
+.ssp-template-main-template-5 .skype i { color: #00AFF0; }
+.ssp-template-main-template-5 .reddit i { color: #FF4500; }
+.ssp-template-main-template-5 .pinterest i { color: #E60023; }
+.ssp-template-main-template-5 .mail i { color: #D44638; }
+.ssp-template-main-template-5 .wechat i { color: #7BB32E; }

@@ -82,15 +82,15 @@ if ( ! class_exists( 'SSPP_Main' ) ) {
 
 			$selected_page = get_option( 'sspp_show_in_pages', [] );
 			$load_template = get_option( 'sspp_select_template' );
-			$sspp_show = get_option( 'sspp_enable_disable' );
+			$sspp_show     = get_option( 'sspp_enable_disable' );
 
 			// If not single post
-			if( ! is_singular('post')){
+			if ( ! is_singular( 'post' ) ) {
 				return;
 			}
 
 			// check if not enable
-			if(! 'yes' == $sspp_show){
+			if ( ! 'yes' == $sspp_show ) {
 				return $content;
 			}
 
@@ -121,18 +121,21 @@ if ( ! class_exists( 'SSPP_Main' ) ) {
 		 */
 		public function sspp_enqueue_front_end_script_style() {
 			wp_register_script( 'sspp-template-scripts', SSPP_PLUGIN_URI . 'assets/js/template-scripts.js', [], SSPP_PLUGIN_VERSION, array( 'in_footer' => true ) );
-
 			wp_register_style( 'sspp-template-styles', SSPP_PLUGIN_URI . 'assets/css/template-styles.css', [], SSPP_PLUGIN_VERSION, 'all' );
-
 			wp_register_style( 'sspp-fontawesome', SSPP_PLUGIN_URI . 'assets/css/font-awesome/css/all.css', [], SSPP_PLUGIN_VERSION, 'all' );
 
-
 			wp_enqueue_script( 'sspp-template-scripts' );
-			
 			wp_enqueue_style( 'sspp-fontawesome' );
-
 			wp_enqueue_style( 'sspp-template-styles' );
 
+			$bg_color = get_theme_mod( 'background_color' ) ? '#' . get_theme_mod( 'background_color' ) : '#000000';
+
+			$custom_css = "
+            .ssp-template-main-template-5 .ssp-share {
+            background-color: {$bg_color};
+             }";
+
+			wp_add_inline_style( 'sspp-template-styles', $custom_css );
 		}
 
 	}
