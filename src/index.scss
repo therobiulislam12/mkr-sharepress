@@ -97,39 +97,76 @@ a.toplevel_page_sspp-settings {
   color: #fff;
 }
 
-#ssp-dashboard .ssp-main-area {
-  padding: 30px 24px 20px 24px;
+.ssp-main-area .sspp-menu-tab {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 20px;
+  min-height: 80vh;
+  height: 100%;
+}
+.ssp-main-area .sspp-menu-bar {
+  background-color: #fff;
+  border-right: 1px solid #dedede;
+  padding: 20px 15px;
+}
+.ssp-main-area .sspp-outlet {
+  padding: 20px 15px;
+}
+.sspp-menu-bar ul li {
+  width: 100%;
+}
+.sspp-menu-bar ul li:not(:last-child) {
+  border-bottom: 1px solid #eee;
+}
+.sspp-menu-bar ul li a {
+  padding: 15px;
+  font-weight: 500;
+  color: #353537;
+  transition: all 0.3s ease;
+  display: block;
+  margin: 10px 0;
+}
+.sspp-menu-bar ul li a:hover {
+  color: #1a7efb !important;
+  border-radius: 5px;
+  background-color: #f1f3f4;
+}
+.ssp-main-area a.active {
+  color: #1a7efb !important;
+  border-radius: 5px;
+  background-color: #f1f3f4;
 }
 /* ============================
     Dashboard Header
 ===============================*/
-.sssp-header {
+.sspp-header {
   background: #fff;
   border-bottom: 1px solid #ececec;
   display: flex;
   padding: 15px 24px;
   gap: 30px;
+  justify-content: space-between;
+  align-items: center;
 }
-.sspp-menu-bar ul {
-  display: flex;
-  gap: 10px;
-}
-.sspp-menu-bar ul li a {
-  padding: 10px;
-  font-weight: 500;
-  color: #353537;
-  transition: all 0.3s ease;
-}
-.sspp-menu-bar ul li a:hover {
-  color: #1a7efb !important;
-  border-radius: 5px;
-  background-color: #e8f2ff;
-}
-.sssp-header .sspp-logo a {
-  font-size: 24px;
+.sspp-header .sspp-logo a {
+  font-size: 1.5rem;
   font-weight: 600;
 }
 
+.sspp-header .sspp-logo a:hover {
+  color: #1a7efb;
+}
+.sspp-header .sspp-upgrade button {
+  background: #1a7efb;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+}
 /*
   General Settings Page
 */
@@ -146,7 +183,7 @@ a.toplevel_page_sspp-settings {
   align-items: center;
   gap: 50px;
 }
-.sspp-input-field input{
+.sspp-input-field input {
   display: inline-block;
 }
 
@@ -161,10 +198,10 @@ a.toplevel_page_sspp-settings {
 }
 
 // form button
-.sspp-submit-button{
+.sspp-submit-button {
   margin-top: 20px;
 }
-.sspp-submit-button input{
+.sspp-submit-button input {
   background-color: #1a7efb;
   border: none;
   padding: 10px 30px;

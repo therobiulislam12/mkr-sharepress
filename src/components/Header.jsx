@@ -2,19 +2,12 @@ import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
-    <section className="sssp-header">
+    <section className="sspp-header">
       <div className="sspp-logo">
         <Link to="/">Social Share Press</Link>
       </div>
-      <div className="sspp-menu-bar">
-        <ul>
-          <li>
-            <Link to="/">Settings</Link>
-          </li>
-          <li>
-            <Link to="support">Support</Link>
-          </li>
-        </ul>
+      <div className="sspp-upgrade">
+        <button>Upgrade Pro</button>
       </div>
     </section>
   );

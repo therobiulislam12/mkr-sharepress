@@ -1,5 +1,4 @@
-import { Outlet } from "react-router-dom";
-import Footer from "../components/Footer";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import Header from "../components/Header";
 
 const Main = () => {
@@ -7,9 +6,24 @@ const Main = () => {
     <>
       <Header />
       <div className="ssp-main-area">
-        <Outlet />
+        <div className="sspp-menu-tab">
+          {/* Menu Section */}
+          <div className="sspp-menu-bar">
+            <ul>
+              <li>
+                <NavLink to="/">Settings</NavLink>
+              </li>
+              <li>
+                <NavLink to="support">Support</NavLink>
+              </li>
+            </ul>
+          </div>
+          {/* Route section */}
+          <div className="sspp-outlet">
+            <Outlet />
+          </div>
+        </div>
       </div>
-      <Footer />
     </>
   );
 };
