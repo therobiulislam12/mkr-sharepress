@@ -213,3 +213,71 @@ section.temp-2-ssp-social-bottom-c {
 .ssp-template-main-template-5 .pinterest i { color: #E60023; }
 .ssp-template-main-template-5 .mail i { color: #D44638; }
 .ssp-template-main-template-5 .wechat i { color: #7BB32E; }
+
+
+/*
+==============================================
+        Template 3
+==============================================
+*/
+body{
+    position: relative;
+}
+.sspp-left-icon-section {
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-start;
+    text-align: center;
+    padding: 50px 0px;
+    margin-left: -100px;
+    position: absolute;
+    z-index: 1;
+    top: 100px;
+  }
+  
+  .sspp-right-icon-section {
+    margin: 0 auto;
+    display: flex;
+    justify-content: flex-end;
+    text-align: center;
+    padding: 50px 0px;
+    position: absolute;
+    z-index: 1;
+    top: 100px;
+    right: 250px;
+  }
+  .sspp-social-share-text {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #000;
+    line-height: 1.2em;
+  }
+  .sspp-social-share-text ul {
+    padding: 0;
+  }
+  
+  .sspp-social-share-text ul li {
+    list-style: none;
+    display: inline-flex;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 45px;
+    height: 45px;
+    background: #fff;
+    box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.06);
+    border-radius: 3px;
+    transition: all 0.3s ease;
+  }
+  .sspp-social-share-text ul li:hover {
+    opacity: 0.9;
+    transform: translateY(-3px) scale(1.01);
+  }
+  .sspp-social-share-text ul li a {
+    text-decoration: none;
+    outline: 0 none;
+    color: #3b5998;
+    font-size: 18px;
+  }
+  
