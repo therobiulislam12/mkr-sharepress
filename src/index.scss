@@ -160,3 +160,18 @@ a.toplevel_page_sspp-settings {
   gap: 15px;
 }
 
+// form button
+.sspp-submit-button{
+  margin-top: 20px;
+}
+.sspp-submit-button input{
+  background-color: #1a7efb;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 5px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+}
