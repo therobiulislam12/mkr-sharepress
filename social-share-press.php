@@ -47,6 +47,11 @@ if ( ! class_exists( 'SSPP_Main' ) ) {
 
 			// add frontend scripts and style
 			add_action( 'wp_enqueue_scripts', array( $this, 'sspp_enqueue_front_end_script_style' ) );
+
+			// admin enqueue script
+			add_action('admin_enqueue_scripts', array($this, 'ssp_admin_enqueue_scripts'));
+
+			new Ajax();
 		}
 
 		/**
@@ -56,6 +61,7 @@ if ( ! class_exists( 'SSPP_Main' ) ) {
 		public function include_files() {
 			require SSPP_PLUGIN_DIR . 'includes/class-admin-menu.php';
 			require SSPP_PLUGIN_DIR . 'includes/functions.php';
+			require SSPP_PLUGIN_DIR . 'includes/class-ajax-request.php';
 		}
 
 		/**
@@ -86,7 +92,7 @@ if ( ! class_exists( 'SSPP_Main' ) ) {
 
 			// If not single post
 			if ( ! is_singular( 'post' ) ) {
-				return;
+				return $content;
 			}
 
 			// check if not enable
@@ -136,6 +142,43 @@ if ( ! class_exists( 'SSPP_Main' ) ) {
              }";
 
 			wp_add_inline_style( 'sspp-template-styles', $custom_css );
+		}
+
+		/**
+		 * Admin Enqueue Scripts
+		 * 
+		 * @return void
+		 */
+		public function ssp_admin_enqueue_scripts( $admin_page ){
+
+			if('toplevel_page_sspp-settings' !== $admin_page){
+				return;
+			}
+
+			$asset_file = plugin_dir_path( __FILE__ ) . 'build/index.asset.php';
+
+			if ( ! file_exists( $asset_file ) ) {
+				return;
+			}
+		
+			$asset = include $asset_file;
+		
+			wp_enqueue_script(
+				'ssp-admin-dashboard',
+				plugins_url( 'build/index.js', __FILE__ ),
+				$asset['dependencies'],
+				$asset['version'],
+				array(
+					'in_footer' => true,
+				)
+			);
+
+			wp_enqueue_style('ssp-admin-dashboard', plugins_url( 'build/index.css', __FILE__ ));
+
+			wp_localize_script('ssp-admin-dashboard', 'SSPPData', array(
+				'ajax_url' => admin_url('admin-ajax.php'),
+				'sspp_save_nonce' => wp_create_nonce('sspp-save-settings')
+			));
 		}
 
 	}
