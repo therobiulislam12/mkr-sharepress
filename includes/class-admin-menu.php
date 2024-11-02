@@ -153,7 +153,15 @@ if ( ! class_exists( 'SSPP_Class_Admin_Menu' ) ) {
 		 * @return void
 		 */
 		public function register_admin_menu_page() {
-			add_menu_page( 'Admin Settings', 'SSP Settings', 'manage_options', 'sspp-settings', array( $this, 'render_admin_menu_page' ), '', 7 );
+			add_menu_page( 
+				__('Social Share Press Settings', 'social-share-press'), 
+				__('SSP Settings', 'social-share-press'), 
+				'manage_options', 
+				'sspp-settings', 
+				array( $this, 'render_admin_menu_page' ), 
+				'dashicons-share', 
+				7 
+			);
 		}
 
 		/**
