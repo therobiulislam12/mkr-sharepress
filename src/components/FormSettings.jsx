@@ -77,7 +77,7 @@ const FormSettings = () => {
       <div className="sspp-form-wrapper">
         <form method="post" onSubmit={handleSubmit}>
           <div className="sspp-input-field">
-            <p>Enable / Disable Social Share Press: </p>
+            <p>Enable / Disable : </p>
             <label
               htmlFor="sspp_enable_disable"
               className="sspp-image-checkbox"
@@ -110,7 +110,7 @@ const FormSettings = () => {
           </div>
 
           <div className="sspp-input-field sspp-icon-selection">
-            <p>Select a Template:</p>
+            <p>Choice Social Platform:</p>
             <div className="sspp-templates">
               {socialIcons.map((socialIcon) => (
 

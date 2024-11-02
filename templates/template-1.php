@@ -8,10 +8,10 @@ $permitted_links = get_option( 'sspp_show_social_links', [] );
 ?>
 
 <?php if ( !empty( $permitted_links ) ): ?>
-<section class="ssp-template-main-template">
+<section class="ssp-social-share-press-template-1">
     <div class="ssp-bg-box">
         <div class="ssp-share-btn">
-            <span class="ssp-text-share-btn">Share</span>
+            <p class="ssp-text-share-btn">Share</p>
             <ul class="ssp-share-items">
                 <?php if ( in_array( 'facebook', $permitted_links ) ) { ?>
                     <li><a href="https://www.facebook.com/sharer/sharer.php?u=<?php echo esc_url(get_the_permalink()) ?>" target="_blank" onclick="return openPopup(this.href)"><i class="fab fa-facebook-f"></i></a></li>
