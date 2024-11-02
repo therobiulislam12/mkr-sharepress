@@ -9,18 +9,19 @@ class Ajax{
 
     public function sspp_save_settings_ajax_callback() {
         check_ajax_referer('sspp-save-settings');
-    
-        
+
         $is_enable = isset($_POST['sspp_enable_disable']) ? sanitize_text_field(wp_unslash($_POST['sspp_enable_disable'])) : '';
         $selected_template = isset($_POST['sspp_select_template']) ? sanitize_text_field(wp_unslash($_POST['sspp_select_template'])) : '';
-    
+
+        $social_links = isset($_POST['sspp_show_social_links']) ? $_POST['sspp_show_social_links'] : [];
         
         update_option('sspp_enable_disable', $is_enable, true);
         update_option('sspp_select_template', $selected_template, true);
+        update_option('sspp_show_social_links', $social_links, true);
     
         wp_send_json_success([
             'success' => true,
-            'message' => 'save settings successfully'
+            'message' => 'save settings successfully',
         ]);
     }
 
@@ -29,7 +30,8 @@ class Ajax{
         // data 
         $default = [
             'is_enable' => get_option('sspp_enable_disable', true),
-            'selected_template' => get_option('sspp_select_template', true)
+            'selected_template' => get_option('sspp_select_template', true),
+            'social_icons' => get_option('sspp_show_social_links', true),
         ];
 
         wp_send_json(['success' => true, 'data' => $default]);
