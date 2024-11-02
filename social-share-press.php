@@ -4,7 +4,7 @@
  * Description:  All in one social media sharing platform. Post any content without boundary.
  * Plugin URI:   #
  * Version:      1.0.0
- * Author:       Robiul, Khorshed, Mustafizur
+ * Author:       MKR Team
  * Author URI:   https://robiul.net/about
  * License:      GPL v2 or later
  * License URI:  https://www.gnu.org/licenses/gpl-2.0.html
