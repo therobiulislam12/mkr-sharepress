@@ -11,8 +11,8 @@ class Ajax{
         check_ajax_referer('sspp-save-settings');
     
         
-        $is_enable = isset($_POST['sspp_enable_disable']) ? sanitize_text_field($_POST['sspp_enable_disable']) : '';
-        $selected_template = isset($_POST['sspp_select_template']) ? sanitize_text_field($_POST['sspp_select_template']) : '';
+        $is_enable = isset($_POST['sspp_enable_disable']) ? sanitize_text_field(wp_unslash($_POST['sspp_enable_disable'])) : '';
+        $selected_template = isset($_POST['sspp_select_template']) ? sanitize_text_field(wp_unslash($_POST['sspp_select_template'])) : '';
     
         
         update_option('sspp_enable_disable', $is_enable, true);
