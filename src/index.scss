@@ -1,0 +1,214 @@
+/*
+Common CSS
+*/
+body {
+  background-color: #f2f2f2;
+  color: #606266;
+}
+
+#wpcontent {
+  padding-left: 0;
+}
+
+#wpbody-content * {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #1e1f21;
+  margin: 0;
+}
+
+ol,
+ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+h1 {
+  font-size: 24px;
+}
+
+h2 {
+  font-size: 23px;
+}
+
+h3 {
+  font-size: 22px;
+  line-height: 1.4;
+}
+
+h4 {
+  font-size: 20px;
+}
+
+h5 {
+  font-size: 18px;
+}
+
+h6 {
+  font-size: 16px;
+}
+
+p {
+  font-size: 15px;
+}
+
+p:last-child {
+  margin: 0;
+}
+
+hr {
+  border-bottom-color: #ececec;
+  border-top: 0;
+}
+
+dd,
+li {
+  margin-bottom: 0;
+}
+
+a {
+  color: #1a7efb;
+  font-weight: 400;
+  text-decoration: none;
+}
+
+a:focus {
+  box-shadow: none;
+  outline: none;
+}
+
+a:hover {
+  color: #1a7efb;
+}
+
+/* ============================
+    Menu Page Icon
+===============================*/
+a.toplevel_page_sspp-settings {
+  background-color: #1a7efb !important;
+  color: #fff;
+}
+
+.ssp-main-area .sspp-menu-tab {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  gap: 20px;
+  min-height: 80vh;
+  height: 100%;
+}
+.ssp-main-area .sspp-menu-bar {
+  background-color: #fff;
+  border-right: 1px solid #dedede;
+  padding: 20px 15px;
+}
+.ssp-main-area .sspp-outlet {
+  padding: 20px 15px;
+}
+.sspp-menu-bar ul li {
+  width: 100%;
+}
+.sspp-menu-bar ul li:not(:last-child) {
+  border-bottom: 1px solid #eee;
+}
+.sspp-menu-bar ul li a {
+  padding: 15px;
+  font-weight: 500;
+  color: #353537;
+  transition: all 0.3s ease;
+  display: block;
+  margin: 10px 0;
+}
+.sspp-menu-bar ul li a:hover {
+  color: #1a7efb !important;
+  border-radius: 5px;
+  background-color: #f1f3f4;
+}
+.ssp-main-area a.active {
+  color: #1a7efb !important;
+  border-radius: 5px;
+  background-color: #f1f3f4;
+}
+/* ============================
+    Dashboard Header
+===============================*/
+.sspp-header {
+  background: #fff;
+  border-bottom: 1px solid #ececec;
+  display: flex;
+  padding: 15px 24px;
+  gap: 30px;
+  justify-content: space-between;
+  align-items: center;
+}
+.sspp-header .sspp-logo a {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.sspp-header .sspp-logo a:hover {
+  color: #1a7efb;
+}
+.sspp-header .sspp-upgrade button {
+  background: #1a7efb;
+  border: none;
+  padding: 8px 20px;
+  border-radius: 5px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+}
+/*
+  General Settings Page
+*/
+.sspp-form-wrapper {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(30, 31, 33, 0.08);
+  padding: 15px 24px;
+  margin-top: 24px;
+}
+.sspp-input-field {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 50px;
+}
+.sspp-input-field input {
+  display: inline-block;
+}
+
+.sspp-input-field.sspp-template-selection {
+  margin-top: 20px;
+  align-items: flex-start !important;
+}
+
+.sspp-templates {
+  display: flex;
+  gap: 15px;
+}
+
+// form button
+.sspp-submit-button {
+  margin-top: 20px;
+}
+.sspp-submit-button input {
+  background-color: #1a7efb;
+  border: none;
+  padding: 10px 30px;
+  border-radius: 5px;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  color: #fff;
+  cursor: pointer;
+}

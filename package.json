@@ -1,0 +1,17 @@
+{
+  "name": "social-share-press",
+  "version": "1.0.0",
+  "description": "A simple and lightweight plugin that adds customizable social media share buttons with popup functionality.",
+  "scripts": {
+    "start": "wp-scripts start",
+    "build": "wp-scripts build"
+  },
+  "author": "Robiul Islam",
+  "license": "GPLv2 or later",
+  "dependencies": {
+    "@wordpress/scripts": "^30.4.0",
+    "react-router-dom": "^6.27.0",
+    "react-toastify": "^10.0.6"
+  },
+  "devDependencies": {}
+}
