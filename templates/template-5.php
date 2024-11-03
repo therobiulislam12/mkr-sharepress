@@ -4,7 +4,6 @@
  * Template - 5
  */
 
-
 $permitted_links = get_option( 'sspp_show_social_links', [] );
 
 ?>
