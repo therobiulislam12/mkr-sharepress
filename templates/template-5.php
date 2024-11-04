@@ -42,10 +42,8 @@ $permitted_links = get_option( 'sspp_show_social_links', [] );
 					<?php }
 					if ( in_array( 'wechat', $permitted_links ) ) { ?>
 						<a class="icon wechat" href="https://share.wechat.com/cgi-bin/share?url=<?php echo esc_url(get_the_permalink()) ?>" target="_blank" onclick="return openPopup(this.href)"><i class="fab fa-weixin"></i></a>
-					<?php }
-					?>
-
-			</div>
+					<?php } ?>
+			    </div>
 			</div>
 		</div>
 	</section>

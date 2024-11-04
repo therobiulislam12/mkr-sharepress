@@ -323,25 +323,20 @@ body {
     text-decoration: none;
 }
 
-
 .sspp-template-4 .sspp-icons-wrapper {
     display: flex;
-    height: 70vh;
     flex-direction: row;
-    padding: 0 20px;
     align-items: center;
     justify-content: center;
 }
 
-
 .sspp-template-4 .sspp-icons-wrapper .fa-3x {
-    font-size: 1.8em !important;
+    font-size: 1.1em !important;
 }
-
 
 .sspp-template-4 .sspp-icons-wrapper .fab {
     margin: auto;
-    width: 70px;
+    width: 50px;
 }
 
 .sspp-template-4 .sspp-icons-wrapper .social {
@@ -366,8 +361,12 @@ body {
     color: #1DA1F2;
 }
 
-.sspp-template-4 .sspp-icons-wrapper .wechat {
-    color: #c4302b;
+.sspp-template-4 .sspp-icons-wrapper .weixin {
+    color: #1AAD19;
+}
+
+.sspp-template-4 .sspp-icons-wrapper .linkedin {
+    color: #0077B5;
 }
 
 .sspp-template-4 .sspp-icons-wrapper .pinterest {
@@ -383,22 +382,26 @@ body {
 }
 
 .sspp-template-4 .sspp-icons-wrapper .reddit {
-    color: #34526f;
+    color: #FF5700;
 }
 
 .sspp-template-4 .sspp-icons-wrapper .envelope {
-    color: #f54a2c;
+    color: #0072C6;
 }
 
 .sspp-template-4 .sspp-icons-wrapper .whatsapp {
     color: #25D366;
 }
 
+.sspp-template-4 .sspp-icons-wrapper .skype {
+    color: #00aff0;
+}
+
 .sspp-template-4 .sspp-icons-wrapper .bg-ico {
     display: flex;
     background-color: #FFF;
-    width: 60px;
-    height: 60px;
+    width: 40px;
+    height: 40px;
     line-height: 90px;
     margin: 0 5px;
     text-align: center;
@@ -425,8 +428,12 @@ body {
     background-color: #1DA1F2;
 }
 
-.sspp-template-4 .sspp-icons-wrapper #youtube:hover {
-    background-color: #c4302b;
+.sspp-template-4 .sspp-icons-wrapper #weixin:hover {
+    background-color: #1AAD19;
+}
+
+.sspp-template-4 .sspp-icons-wrapper #linkedin:hover {
+    background-color: #0077B5;
 }
 
 .sspp-template-4 .sspp-icons-wrapper #pinterest:hover {
@@ -439,19 +446,30 @@ body {
 }
 
 .sspp-template-4 .sspp-icons-wrapper #reddit:hover {
-    background-color: #34526f;
+    background-color: #FF5700;
 }
 
 .sspp-template-4 .sspp-icons-wrapper #whatsapp:hover {
     background-color: #25D366;
 }
 
+.sspp-template-4 .sspp-icons-wrapper #skype:hover {
+    background-color: #00aff0;
+}
+
+.sspp-template-4 .sspp-icons-wrapper #envelope:hover {
+    background-color: #0072C6;
+}
+
 .sspp-template-4 .sspp-icons-wrapper .facebook:hover,
 .sspp-template-4 .sspp-icons-wrapper .twitter:hover,
-.sspp-template-4 .sspp-icons-wrapper .youtube:hover,
+.sspp-template-4 .sspp-icons-wrapper .skype :hover,
 .sspp-template-4 .sspp-icons-wrapper .pinterest:hover,
 .sspp-template-4 .sspp-icons-wrapper .instagram:hover,
-.sspp-template-4 .sspp-icons-wrapper .tumblr:hover,
+.sspp-template-4 .sspp-icons-wrapper .weixin:hover,
+.sspp-template-4 .sspp-icons-wrapper .envelope:hover,
+.sspp-template-4 .sspp-icons-wrapper .reddit:hover,
+.sspp-template-4 .sspp-icons-wrapper .linkedin:hover,
 .sspp-template-4 .sspp-icons-wrapper .whatsapp:hover {
     color: #fff;
     transform: scale(1);
