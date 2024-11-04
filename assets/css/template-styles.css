@@ -1,11 +1,12 @@
 /* Main Template styles */
 
-.ssp-template-container{
+.ssp-template-container {
     width: 400px;
     margin: 0 auto;
     padding: 10px 0;
 }
-.ssp-template-icons{
+
+.ssp-template-icons {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -13,7 +14,7 @@
     gap: 10px;
 }
 
-.ssp-template-icons a img{
+.ssp-template-icons a img {
     width: 50px;
     height: auto;
     cursor: pointer;
@@ -23,12 +24,12 @@
 /* Template-1 Styles */
 
 
-.ssp-template-container{
+.ssp-template-container {
     width: 400px;
     margin: 0 auto;
     padding: 10px 0;
 }
-  
+
 .ssp-bg-box {
     width: 100%;
     min-height: 10vh;
@@ -83,7 +84,7 @@
 
 .ssp-share-items li {
     padding: 0 17px;
-    
+
 }
 
 .ssp-share-items li a {
@@ -115,7 +116,6 @@
 .ssp-share-items li:nth-child(1) a {
     transition: 0.5s 0.9s;
 }
-
 
 
 /* Template-2 Styles */
@@ -193,7 +193,7 @@ section.temp-2-ssp-social-bottom-c {
     visibility: visible;
 }
 
-.ssp-template-main-template-5 .ssp-share-button:hover{
+.ssp-template-main-template-5 .ssp-share-button:hover {
     visibility: hidden;
     transition: 0.3s;
 }
@@ -204,15 +204,41 @@ section.temp-2-ssp-social-bottom-c {
 }
 
 /* Original brand colors for each icon */
-.ssp-template-main-template-5 .facebook i { color: #1DA1F2; }
-.ssp-template-main-template-5 .twitter i { color: #1DA1F2; }
-.ssp-template-main-template-5 .whatsapp i { color: #25D366; }
-.ssp-template-main-template-5 .telegram i { color: #0088cc; }
-.ssp-template-main-template-5 .skype i { color: #00AFF0; }
-.ssp-template-main-template-5 .reddit i { color: #FF4500; }
-.ssp-template-main-template-5 .pinterest i { color: #E60023; }
-.ssp-template-main-template-5 .mail i { color: #D44638; }
-.ssp-template-main-template-5 .wechat i { color: #7BB32E; }
+.ssp-template-main-template-5 .facebook i {
+    color: #1DA1F2;
+}
+
+.ssp-template-main-template-5 .twitter i {
+    color: #1DA1F2;
+}
+
+.ssp-template-main-template-5 .whatsapp i {
+    color: #25D366;
+}
+
+.ssp-template-main-template-5 .telegram i {
+    color: #0088cc;
+}
+
+.ssp-template-main-template-5 .skype i {
+    color: #00AFF0;
+}
+
+.ssp-template-main-template-5 .reddit i {
+    color: #FF4500;
+}
+
+.ssp-template-main-template-5 .pinterest i {
+    color: #E60023;
+}
+
+.ssp-template-main-template-5 .mail i {
+    color: #D44638;
+}
+
+.ssp-template-main-template-5 .wechat i {
+    color: #7BB32E;
+}
 
 
 /*
@@ -220,9 +246,10 @@ section.temp-2-ssp-social-bottom-c {
         Template 3
 ==============================================
 */
-body{
+body {
     position: relative;
 }
+
 .sspp-left-icon-section {
     margin: 0 auto;
     display: flex;
@@ -233,9 +260,9 @@ body{
     position: absolute;
     z-index: 1;
     top: 100px;
-  }
-  
-  .sspp-right-icon-section {
+}
+
+.sspp-right-icon-section {
     margin: 0 auto;
     display: flex;
     justify-content: flex-end;
@@ -245,18 +272,20 @@ body{
     z-index: 1;
     top: 100px;
     right: 250px;
-  }
-  .sspp-social-share-text {
+}
+
+.sspp-social-share-text {
     font-size: 1.6rem;
     font-weight: 700;
     color: #000;
     line-height: 1.2em;
-  }
-  .sspp-social-share-text ul {
+}
+
+.sspp-social-share-text ul {
     padding: 0;
-  }
-  
-  .sspp-social-share-text ul li {
+}
+
+.sspp-social-share-text ul li {
     list-style: none;
     display: inline-flex;
     margin-bottom: 10px;
@@ -269,15 +298,161 @@ body{
     box-shadow: 0 5px 20px 0 rgba(0, 0, 0, 0.06);
     border-radius: 3px;
     transition: all 0.3s ease;
-  }
-  .sspp-social-share-text ul li:hover {
+}
+
+.sspp-social-share-text ul li:hover {
     opacity: 0.9;
     transform: translateY(-3px) scale(1.01);
-  }
-  .sspp-social-share-text ul li a {
+}
+
+.sspp-social-share-text ul li a {
     text-decoration: none;
     outline: 0 none;
     color: #3b5998;
     font-size: 18px;
-  }
-  
+}
+
+
+/*
+==============================================
+      Template 4
+==============================================
+*/
+
+.sspp-template-4 .sspp-icons-wrapper a {
+    text-decoration: none;
+}
+
+
+.sspp-template-4 .sspp-icons-wrapper {
+    display: flex;
+    height: 70vh;
+    flex-direction: row;
+    padding: 0 20px;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.sspp-template-4 .sspp-icons-wrapper .fa-3x {
+    font-size: 1.8em !important;
+}
+
+
+.sspp-template-4 .sspp-icons-wrapper .fab {
+    margin: auto;
+    width: 70px;
+}
+
+.sspp-template-4 .sspp-icons-wrapper .social {
+    color: #FFF;
+    transition: all 0.35s;
+    transition-timing-function: cubic-bezier(0.31, -0.105, 0.43, 1.59);
+}
+
+.sspp-template-4 .sspp-icons-wrapper .social:hover {
+    text-shadow: 0px 5px 5px rgba(0, 0, 0, 0.3);
+    transition: all ease 0.5s;
+    -moz-transition: all ease-in 0.5s;
+    -webkit-transition: all ease-in 0.5s;
+    -o-transition: all ease-in 0.5s;
+}
+
+.sspp-template-4 .sspp-icons-wrapper .facebook {
+    color: #4267B2;
+}
+
+.sspp-template-4 .sspp-icons-wrapper .twitter {
+    color: #1DA1F2;
+}
+
+.sspp-template-4 .sspp-icons-wrapper .wechat {
+    color: #c4302b;
+}
+
+.sspp-template-4 .sspp-icons-wrapper .pinterest {
+    color: #c8232c;
+}
+
+.sspp-template-4 .sspp-icons-wrapper .instagram {
+    color: transparent;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.sspp-template-4 .sspp-icons-wrapper .reddit {
+    color: #34526f;
+}
+
+.sspp-template-4 .sspp-icons-wrapper .envelope {
+    color: #f54a2c;
+}
+
+.sspp-template-4 .sspp-icons-wrapper .whatsapp {
+    color: #25D366;
+}
+
+.sspp-template-4 .sspp-icons-wrapper .bg-ico {
+    display: flex;
+    background-color: #FFF;
+    width: 60px;
+    height: 60px;
+    line-height: 90px;
+    margin: 0 5px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 28%;
+    box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.1);
+    opacity: 0.99;
+    -webkit-transition: background-color 2s ease-out;
+    -moz-transition: background-color 2s ease-out;
+    -o-transition: background-color 2s ease-out;
+    transition: background-color 2s ease-out;
+}
+
+.sspp-template-4 .sspp-icons-wrapper .bg-ico:hover {
+    box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.8);
+}
+
+.sspp-template-4 .sspp-icons-wrapper #facebook:hover {
+    background-color: #4267B2;
+}
+
+.sspp-template-4 .sspp-icons-wrapper #twitter:hover {
+    background-color: #1DA1F2;
+}
+
+.sspp-template-4 .sspp-icons-wrapper #youtube:hover {
+    background-color: #c4302b;
+}
+
+.sspp-template-4 .sspp-icons-wrapper #pinterest:hover {
+    background-color: #c8232c;
+}
+
+.sspp-template-4 .sspp-icons-wrapper #instagram:hover {
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+    background: -webkit-radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%);
+}
+
+.sspp-template-4 .sspp-icons-wrapper #reddit:hover {
+    background-color: #34526f;
+}
+
+.sspp-template-4 .sspp-icons-wrapper #whatsapp:hover {
+    background-color: #25D366;
+}
+
+.sspp-template-4 .sspp-icons-wrapper .facebook:hover,
+.sspp-template-4 .sspp-icons-wrapper .twitter:hover,
+.sspp-template-4 .sspp-icons-wrapper .youtube:hover,
+.sspp-template-4 .sspp-icons-wrapper .pinterest:hover,
+.sspp-template-4 .sspp-icons-wrapper .instagram:hover,
+.sspp-template-4 .sspp-icons-wrapper .tumblr:hover,
+.sspp-template-4 .sspp-icons-wrapper .whatsapp:hover {
+    color: #fff;
+    transform: scale(1);
+}
